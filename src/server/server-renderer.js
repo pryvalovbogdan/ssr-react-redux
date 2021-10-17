@@ -1,16 +1,16 @@
-import { createStore, applyMiddleware } from 'redux';
+import React from 'react';
+import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import { App } from '../containers/App';
-import { counterApp } from '../containers/reducers';
+import { App } from '../containers/App.js';
+import { counterApp } from '../containers/reducers.js';
 import { renderToString } from 'react-dom/server';
-import logger from 'redux-logger';
 
-function handleRender(req, res) {
+export function handleRender(req, res) {
 	// Compile an initial state
 	let preloadedState = { counter: 23 };
 
 	// Create a new Redux store instance
-	const store = createStore(counterApp, preloadedState, applyMiddleware(logger));
+	const store = createStore(counterApp, preloadedState);
 
 	// Render the component to a string
 	const html = renderToString(
@@ -46,12 +46,8 @@ function renderFullPage(html, preloadedState) {
 					'\\u003c'
 				)}
         </script>
-        <script src="./client/index.js"></script>
+       <script src="./bundle.js"></script>
       </body>
     </html>
     `
 }
-
-module.exports = {
-	handleRender
-};

@@ -1,4 +1,4 @@
-import { APP_RESET, SET_COUNT } from './consts';
+import { APP_RESET, SET_COUNT } from './consts.js';
 
 export const initialState = {
 	count: 1,

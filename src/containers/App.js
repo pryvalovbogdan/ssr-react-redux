@@ -1,14 +1,15 @@
 import React from 'react';
-import {selectorGetData} from "./selectors";
+import {selectorGetData} from "./selectors.js";
 import {useSelector} from "react-redux";
 
 export const App = () => {
 	const counter = useSelector(
 		selectorGetData
 	);
+	console.log('counter.count', counter);
 
 	return <div>
-		hellose
-		<span>{counter.count}</span>
+		hello
+		<span>{counter}</span>
 	</div>
 };
